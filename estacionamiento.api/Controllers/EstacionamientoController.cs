@@ -15,11 +15,11 @@ namespace estacionamiento.api.Controllers
             estacionamientoBL = _estacionamientoBL;
         }
         [HttpGet]
-        public IActionResult BuscarPorId(int id_meta)
+        public IActionResult BuscarPorId(int id)
         {
             try
             {
-                return Ok(estacionamientoBL.BuscarPorId(id_meta));
+                return Ok(estacionamientoBL.BuscarPorId(id));
             }
             catch (Exception ex)
             {
@@ -27,12 +27,12 @@ namespace estacionamiento.api.Controllers
             }
         }
 
-        [HttpGet("ListarPorId")]
-        public IActionResult ListarPorId(string estacionamientoId)
+        [HttpGet("ListarPorPiso")]
+        public IActionResult ListarPorPiso(string piso)
         {
             try
             {
-                return Ok(estacionamientoBL.ListarPorId(estacionamientoId));
+                return Ok(estacionamientoBL.ListarPorPiso(piso));
             }
             catch (Exception ex)
             {

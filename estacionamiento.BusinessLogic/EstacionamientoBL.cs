@@ -25,11 +25,11 @@ namespace estacionamiento.BusinessLogic
             }
         }
 
-        public IEnumerable<EstacionamientoModel> ListarPorId(string id_usuario)
+        public IEnumerable<EstacionamientoModel> ListarPorPiso(string piso)
         {
             try
             {
-                return estacionamientoDA.ListarPorId(id_usuario);
+                return estacionamientoDA.ListarPorPiso(piso);
             }
             catch (System.Exception)
             {
