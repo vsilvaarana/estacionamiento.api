@@ -9,7 +9,10 @@ namespace estacionamiento.BusinessLogic
     {
         private readonly EstacionamientoDA estacionamientoDA;
 
-
+        public EstacionamientoBL(IConfiguration configuration)
+        {
+            estacionamientoDA = new EstacionamientoDA(configuration.GetConnectionString("dbEstacionamiento"));
+        }
         public EstacionamientoEntity BuscarPorId(int id_meta)
         {
             try
