@@ -11,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<UsuarioBL>();
 builder.Services.AddScoped<EstacionamientoBL>();
+builder.Services.AddScoped<ReservaBL>();
 
 var app = builder.Build();
 
