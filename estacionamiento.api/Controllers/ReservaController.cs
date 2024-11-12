@@ -1,4 +1,5 @@
 ﻿using estacionamiento.BusinessLogic;
+using estacionamiento.DataAccess;
 using estacionamiento.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -58,6 +59,19 @@ namespace estacionamiento.api.Controllers
             try
             {
                 return Ok(reservaBL.BuscarPorId(id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("ListarPorEmpleado")]
+        public IActionResult ListarPorEmpleado(int empleadoId)
+        {
+            try
+            {
+                return Ok(reservaBL.ListarPorEmpleado(empleadoId));
             }
             catch (Exception ex)
             {

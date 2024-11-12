@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\estacionamiento.Entities\estacionamiento.Entities.csproj" />
-    <ProjectReference Include="..\estacionamiento.Models\estacionamiento.Models.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using estacionamiento.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace estacionamiento.Repositories
 {
     public interface ReservaRepository
     {
+        IEnumerable<ReservaModel> ListarPorEmpleado(int empleadoId);
     }
 }

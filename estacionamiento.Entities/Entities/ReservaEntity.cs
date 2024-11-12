@@ -11,7 +11,7 @@ namespace estacionamiento.Entities
         public int reservaId { get; set; }
         public int usuarioId { get; set; }
         public int estacionamientoId { get; set; }
-        public int vehiculoId { get; set; } = 0;
+        public string placa { get; set; } = string.Empty;
         public DateTime fecha { get; set; }
         public int tipo { get; set; }
         public int estado { get; set; }

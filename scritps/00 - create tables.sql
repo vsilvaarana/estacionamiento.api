@@ -1,27 +1,21 @@
-
-create table usuario
-(
-	usuarioid int identity(1,1) primary key,
-	nombre nvarchar(50),
-	apellido nvarchar(50),
-	tipodocumento int,
-	documento nvarchar(50),
-	correo nvarchar(50),
-	contrasena nvarchar(50)
-)
-
 go
 
-create table estacionamiento
+drop table reserva
+
+create table reserva
 (
-	estacionamientoid int identity(1,1) primary key,
-	piso nvarchar(50),
-	espacio nvarchar(50),
+	reservaid int identity(1,1) primary key,
+	usuarioid int,
+	estacionamientoid int,
+	placa nvarchar(50),
+	fecha datetime,
 	tipo int,
 	estado int
 )
 
 go
+
+drop table vehiculo
 
 create table vehiculo
 (
@@ -34,20 +28,41 @@ create table vehiculo
 
 go
 
-create table reserva
+drop table usuario
+
+create table usuario
 (
-	reservaid int identity(1,1) primary key,
-	usuarioid int,
-	estacionamientoid int,
-	vehiculoid int,
-	fecha datetime,
+	usuarioid int identity(1,1) primary key,
+	nombre nvarchar(50),
+	apellido nvarchar(50),
+	tipodocumento int,
+	documento nvarchar(50),
+	marca nvarchar(50),
+	modelo nvarchar(50),
+	placa nvarchar(50),
+	correo nvarchar(50),
+	contrasena nvarchar(50)
+)
+
+go
+
+drop table estacionamiento
+
+create table estacionamiento
+(
+	estacionamientoid int identity(1,1) primary key,
+	piso nvarchar(50),
+	espacio nvarchar(50),
 	tipo int,
 	estado int
 )
+
+
+
 
 go
 
 ALTER TABLE reserva ADD FOREIGN KEY (usuarioid) REFERENCES usuario(usuarioid);
 ALTER TABLE reserva ADD FOREIGN KEY (estacionamientoid) REFERENCES estacionamiento(estacionamientoid);
-ALTER TABLE reserva ADD FOREIGN KEY (vehiculoid) REFERENCES vehiculo(vehiculoid);
 ALTER TABLE vehiculo ADD FOREIGN KEY (usuarioid) REFERENCES usuario(usuarioid);
+

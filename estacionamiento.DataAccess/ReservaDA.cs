@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using estacionamiento.Entities;
+using estacionamiento.Models;
 using estacionamiento.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace estacionamiento.DataAccess
 {
-    public class ReservaDA : CRUDRepository<ReservaEntity>
+    public class ReservaDA : CRUDRepository<ReservaEntity>, ReservaRepository
     {
         private readonly SqlConnection conn;
         public ReservaDA(string? sqlConnection)
@@ -58,6 +59,23 @@ namespace estacionamiento.DataAccess
             }
         }
 
+        public IEnumerable<ReservaModel> ListarPorEmpleado(int empleadoId)
+        {
+            try
+            {
+                using (conn)
+                {
+                    var query = $"SELECT * FROM reserva";
+
+                    return conn.Query<ReservaModel>(query).ToList();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public bool Modificar(ReservaEntity obj)
         {
             try
@@ -65,7 +83,7 @@ namespace estacionamiento.DataAccess
                 using (conn)
                 {
                     var query = $"update reserva set fecha='{obj.fecha.ToString("yyyy-MM-dd")}', tipo={obj.tipo}, estado={obj.estado}, " +
-                        $"vehiculoid={obj.vehiculoId} " +
+                        $"placa='{obj.placa}' " +
                         $"where reservaid= {obj.reservaId} ";
 
                     conn.Execute(query);
@@ -89,8 +107,8 @@ namespace estacionamiento.DataAccess
             {
                 using (conn)
                 {
-                    var query = $"insert reserva (usuarioid, estacionamientoid, vehiculoid, fecha, tipo, estado) " +
-                        $"values ({obj.usuarioId}, {obj.estacionamientoId}, {obj.vehiculoId}, '{obj.fecha.ToString("yyyy-MM-dd")}', {obj.tipo}, {obj.estado} ) " +
+                    var query = $"insert reserva (usuarioid, estacionamientoid, placa, fecha, tipo, estado) " +
+                        $"values ({obj.usuarioId}, {obj.estacionamientoId}, '{obj.placa}', '{obj.fecha.ToString("yyyy-MM-dd")}', {obj.tipo}, {obj.estado} ) " +
                         $"SELECT SCOPE_IDENTITY()";
 
                     return conn.Query<int>(query).Single();

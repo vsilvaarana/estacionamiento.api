@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace estacionamiento.Entities
+namespace estacionamiento.Models
 {
-    public class UsuarioEntity
+    public class UsuarioModel
     {
         public int usuarioId { get; set; }
         public string nombre { get; set; } = string.Empty;
