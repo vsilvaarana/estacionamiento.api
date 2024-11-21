@@ -59,13 +59,17 @@ namespace estacionamiento.DataAccess
             }
         }
 
-        public IEnumerable<ReservaModel> ListarPorEmpleado(int empleadoId)
+        public IEnumerable<ReservaModel> ListarPorUsuario(int empleadoId)
         {
             try
             {
                 using (conn)
                 {
-                    var query = $"SELECT * FROM reserva";
+                    var query = $"select reservaid, r.fecha, r.estado, e.espacio, e.piso, u.modelo, u.placa " +
+                        $"from reserva r " +
+                        $"inner join usuario u on r.usuarioid = u.usuarioid " +
+                        $"inner join estacionamiento e on r.estacionamientoid = e.estacionamientoid " +
+                        $"where r.usuarioid = {empleadoId}";
 
                     return conn.Query<ReservaModel>(query).ToList();
                 }

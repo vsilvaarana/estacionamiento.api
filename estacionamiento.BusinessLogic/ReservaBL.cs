@@ -62,10 +62,10 @@ namespace estacionamiento.BusinessLogic
             }
         }
 
-        public IEnumerable<ReservaModel> ListarPorEmpleado(int empleadoId) {
+        public IEnumerable<ReservaModel> ListarPorUsuario(int empleadoId) {
             try
             {
-                return reservaDA.ListarPorEmpleado(empleadoId);
+                return reservaDA.ListarPorUsuario(empleadoId);
             }
             catch (Exception)
             {

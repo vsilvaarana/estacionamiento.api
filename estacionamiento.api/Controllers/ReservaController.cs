@@ -66,12 +66,12 @@ namespace estacionamiento.api.Controllers
             }
         }
 
-        [HttpGet("ListarPorEmpleado")]
-        public IActionResult ListarPorEmpleado(int empleadoId)
+        [HttpGet("ListarPorUsuario")]
+        public IActionResult ListarPorUsuario(int usuarioId, string fechaInicio, string fechaFin, string tipo)
         {
             try
             {
-                return Ok(reservaBL.ListarPorEmpleado(empleadoId));
+                return Ok(reservaBL.ListarPorUsuario(usuarioId));
             }
             catch (Exception ex)
             {

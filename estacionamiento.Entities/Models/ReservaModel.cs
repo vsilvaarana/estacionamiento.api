@@ -9,11 +9,11 @@ namespace estacionamiento.Models
     public class ReservaModel
     {
         public int reservaId { get; set; }
-        public int usuarioId { get; set; }
-        public int estacionamientoId { get; set; }
         public string placa { get; set; } = string.Empty;
+        public string espacio { get; set; } = string.Empty;
+        public string piso { get; set; } = string.Empty;
+        public string modelo { get; set; } = string.Empty;
         public DateTime fecha { get; set; }
-        public int tipo { get; set; }
         public int estado { get; set; }
     }
 }

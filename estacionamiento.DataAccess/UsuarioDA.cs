@@ -61,7 +61,7 @@ namespace estacionamiento.DataAccess
                 using (conn)
                 {
                     var query = $"update usuario set nombre='{obj.nombre}', apellido='{obj.apellido}', tipodocumento={obj.tipodocumento}, " +
-                        $"documento='{obj.documento}', correo='{obj.correo}', contrasena='{obj.contrasena}' " +
+                        $"documento='{obj.dni}', correo='{obj.email}', contrasena='{obj.password}', marca='{obj.marca}', placa='{obj.placa}' " +
                         $"where usuarioid= {obj.usuarioId} ";
 
                     conn.Execute(query);
@@ -85,8 +85,8 @@ namespace estacionamiento.DataAccess
             {
                 using (conn)
                 {
-                    var query = $"insert usuario (nombre, apellido, tipodocumento, documento, correo, contrasena) " +
-                        $"values ('{obj.nombre}', '{obj.apellido}', {obj.tipodocumento}, '{obj.documento}', '{obj.correo}', '{obj.contrasena}' ) " +
+                    var query = $"insert usuario (nombre, apellido, tipodocumento, documento, correo, contrasena, marca, placa) " +
+                        $"values ('{obj.nombre}', '{obj.apellido}', {obj.tipodocumento}, '{obj.dni}', '{obj.email}', '{obj.password}', '{obj.marca}', '{obj.placa}' ) " +
                         $"SELECT SCOPE_IDENTITY()";
 
                     return conn.Query<int>(query).Single();
