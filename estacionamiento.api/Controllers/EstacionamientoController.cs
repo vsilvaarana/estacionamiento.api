@@ -78,5 +78,18 @@ namespace estacionamiento.api.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet("BuscarEstacionamientoLibre")]
+        public IActionResult BuscarEstacionamientoLibre()
+        {
+            try
+            {
+                return Ok(estacionamientoBL.BuscarEstacionamientoLibre());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

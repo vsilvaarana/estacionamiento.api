@@ -13,11 +13,11 @@ namespace estacionamiento.BusinessLogic
         {
             estacionamientoDA = new EstacionamientoDA(configuration.GetConnectionString("dbEstacionamiento"));
         }
-        public EstacionamientoEntity BuscarPorId(int id_meta)
+        public EstacionamientoEntity BuscarPorId(int estacionamientoId)
         {
             try
             {
-                return estacionamientoDA.BuscarPorId(id_meta);
+                return estacionamientoDA.BuscarPorId(estacionamientoId);
             }
             catch (Exception)
             {
@@ -66,6 +66,18 @@ namespace estacionamiento.BusinessLogic
             try
             {
                 return estacionamientoDA.Eliminar(id_meta);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public EstacionamientoEntity BuscarEstacionamientoLibre()
+        {
+            try
+            {
+                return estacionamientoDA.BuscarEstacionamientoLibre();
             }
             catch (Exception)
             {

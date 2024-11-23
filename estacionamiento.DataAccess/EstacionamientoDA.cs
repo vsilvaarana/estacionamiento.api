@@ -120,5 +120,26 @@ namespace estacionamiento.DataAccess
                 throw;
             }
         }
+
+        public EstacionamientoEntity BuscarEstacionamientoLibre()
+        {
+            try
+            {
+                using (conn)
+                {
+                   var query = $"select top 1 * from estacionamiento e " +
+                                $"where not exists ( " +
+                                $"select * from reserva r where r.estacionamientoid = e.estacionamientoid " + 
+                                $"and fecha = CONVERT(varchar, GETDATE(), 112)) " + 
+                                $"order by NEWID()";
+
+                    return conn.Query<EstacionamientoEntity>(query).Single();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
