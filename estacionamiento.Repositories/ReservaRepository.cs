@@ -9,6 +9,6 @@ namespace estacionamiento.Repositories
 {
     public interface ReservaRepository
     {
-        IEnumerable<ReservaModel> ListarPorUsuario(int empleadoId);
+        IEnumerable<ReservaModel> ListarPorUsuario(int empleadoId, string fechaInicio, string fechaFin, string tipo);
     }
 }

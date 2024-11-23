@@ -71,7 +71,7 @@ namespace estacionamiento.api.Controllers
         {
             try
             {
-                return Ok(reservaBL.ListarPorUsuario(usuarioId));
+                return Ok(reservaBL.ListarPorUsuario(usuarioId, fechaInicio, fechaFin, tipo));
             }
             catch (Exception ex)
             {

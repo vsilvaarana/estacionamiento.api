@@ -59,7 +59,7 @@ namespace estacionamiento.DataAccess
             }
         }
 
-        public IEnumerable<ReservaModel> ListarPorUsuario(int empleadoId)
+        public IEnumerable<ReservaModel> ListarPorUsuario(int empleadoId, string fechaInicio, string fechaFin, string tipo)
         {
             try
             {
@@ -69,7 +69,9 @@ namespace estacionamiento.DataAccess
                         $"from reserva r " +
                         $"inner join usuario u on r.usuarioid = u.usuarioid " +
                         $"inner join estacionamiento e on r.estacionamientoid = e.estacionamientoid " +
-                        $"where r.usuarioid = {empleadoId}";
+                        $"where r.usuarioid = {empleadoId} " +
+                        $"and r.fecha between '{fechaInicio}' and '{fechaFin}' " +
+                        $"and ( {tipo} = 0 or  (r.estado = {tipo})) ";
 
                     return conn.Query<ReservaModel>(query).ToList();
                 }
