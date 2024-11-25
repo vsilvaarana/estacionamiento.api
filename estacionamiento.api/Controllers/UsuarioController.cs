@@ -1,5 +1,6 @@
 ﻿using estacionamiento.BusinessLogic;
 using estacionamiento.Entities;
+using estacionamiento.Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace estacionamiento.api.Controllers
@@ -74,6 +75,28 @@ namespace estacionamiento.api.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("Login")]
+        public IActionResult Login([FromBody] LoginModel model)
+        {
+            try
+            {
+                var usuario = usuarioBL.ValidarCredenciales(model.Email, model.Password);
+
+                if (usuario == null)
+                {
+                    return Unauthorized(new { Message = "Credenciales inválidas." });
+                }
+
+                var token = "user";
+
+                return Ok(new { Token = token, Success = true, Name = usuario.nombre+" "+usuario.apellido });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "Ocurrió un error interno.", Error = ex.Message });
             }
         }
 

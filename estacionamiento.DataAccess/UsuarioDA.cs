@@ -115,5 +115,22 @@ namespace estacionamiento.DataAccess
                 throw;
             }
         }
+
+        public UsuarioEntity ValidarCredenciales(string email, string password)
+        {
+            try
+            {
+                using (conn)
+                {
+                    var query = $"SELECT * FROM usuario WHERE correo = @Email AND contrasena = @Password";
+
+                    return conn.Query<UsuarioEntity>(query, new { Email = email, Password = password }).SingleOrDefault();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

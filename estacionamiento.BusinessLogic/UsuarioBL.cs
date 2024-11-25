@@ -78,5 +78,17 @@ namespace estacionamiento.BusinessLogic
                 throw;
             }
         }
+
+        public UsuarioEntity ValidarCredenciales(string email, string password)
+        {
+            try
+            {
+                return usuarioDA.ValidarCredenciales(email, password);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
