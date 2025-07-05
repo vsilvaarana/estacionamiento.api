@@ -12,6 +12,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<UsuarioBL>();
 builder.Services.AddScoped<EstacionamientoBL>();
 builder.Services.AddScoped<ReservaBL>();
+builder.Services.AddScoped<VehiculoBL>();
 
 var app = builder.Build();
 

@@ -14,6 +14,7 @@ namespace estacionamiento.Entities
         public int tipodocumento { get; set; } = 0;
         public string dni { get; set; } = string.Empty;
         public string email { get; set; } = string.Empty;
+        //public string correo { get; set; } = string.Empty;
         public string password { get; set; } = string.Empty;
         public string marca { get; set; } = string.Empty;
         public string placa { get; set; } = string.Empty;
