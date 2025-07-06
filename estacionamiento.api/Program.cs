@@ -13,6 +13,7 @@ builder.Services.AddScoped<UsuarioBL>();
 builder.Services.AddScoped<EstacionamientoBL>();
 builder.Services.AddScoped<ReservaBL>();
 builder.Services.AddScoped<VehiculoBL>();
+builder.Services.AddAWSLambdaHosting(LambdaEventSource.RestApi);
 
 var app = builder.Build();
 
